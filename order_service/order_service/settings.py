@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
     # 3d party apps
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
     
     # apps
     'api'

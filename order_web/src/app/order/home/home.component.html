@@ -1,1 +1,92 @@
-<p>home works!</p>
+<div class="container" style="width: 100%; max-width: 900px; margin-top: 20px; padding: 10px;">
+    <h3 style="color: blueviolet; text-align: center;">
+        Full Stack Application with Angular 18, Python, and SQL
+    </h3>
+    <br>
+
+    <!-- All Inputs & Buttons in One Line -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <mat-form-field style="width: 150px; height: 63px;">
+            <input matInput type="text" name="product" [(ngModel)]="order.product" id="product" placeholder="Enter product">
+            <mat-icon matSuffix>store</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field style="width: 150px; height: 63px;">
+            <input matInput type="text" name="quantity" [(ngModel)]="order.quantity" id="quantity" placeholder="Enter quantity">
+            <mat-icon matSuffix>production_quantity_limits</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field style="width: 150px; height: 63px;">
+            <input matInput type="text" name="price" [(ngModel)]="order.price" id="price" placeholder="Enter price">
+            <mat-icon matSuffix>monetization_on</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field style="width: 150px; height: 63px;">
+            <input matInput type="text" name="searchorder" id="searchorder" placeholder="Search order">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <button mat-flat-button style="background-color: #6200ea; color: white; height: 40px;" (click)="addEditOrder(order)">
+            Add
+        </button>
+
+        <button mat-flat-button style="background-color: rgb(220, 55, 55); color: white; height: 40px;">
+            Cancel
+        </button>
+    </div>
+    <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{order.id}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="product">
+            <mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{order.product}} </mat-cell>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef> Qantity </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{order.quantity}} </mat-cell>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{order.price}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+            <mat-cell *matCellDef="let order"> 
+              <button mat-flat-button style="height: 27px; width:auto; background-color: #6200ea;" (click)="setOrder(order)">
+                <mat-icon>edit</mat-icon>
+                Edit
+              </button> 
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let order"> 
+              <button mat-flat-button style="height: 27px; width:auto; background-color: red;" (click)="deleteOrder(order)">
+                <mat-icon>delete</mat-icon> 
+                Delete
+              </button> 
+            </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let orders; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+      
+</div>
